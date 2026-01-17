@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  sorting-low:
+    build:
+      context: .
+      dockerfile: sorting/Dockerfile
+    container_name: sorting-low
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=benchmark
+      - JAVA_OPTS=-Xms128m -Xmx256m
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+
+  sorting-medium:
+    build:
+      context: .
+      dockerfile: sorting/Dockerfile
+    container_name: sorting-medium
+    ports:
+      - "8082:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=benchmark
+      - JAVA_OPTS=-Xms256m -Xmx512m
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 512M
+
+  sorting-high:
+    build:
+      context: .
+      dockerfile: sorting/Dockerfile
+    container_name: sorting-high
+    ports:
+      - "8083:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=benchmark
+      - JAVA_OPTS=-Xms512m -Xmx1024m
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 1G
+
+  graph-low:
+    build:
+      context: .
+      dockerfile: graph-traversal/Dockerfile
+    container_name: graph-low
+    ports:
+      - "8091:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=benchmark
+      - JAVA_OPTS=-Xms128m -Xmx256m
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+
+  graph-medium:
+    build:
+      context: .
+      dockerfile: graph-traversal/Dockerfile
+    container_name: graph-medium
+    ports:
+      - "8092:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=benchmark
+      - JAVA_OPTS=-Xms256m -Xmx512m
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 512M
+
+  graph-high:
+    build:
+      context: .
+      dockerfile: graph-traversal/Dockerfile
+    container_name: graph-high
+    ports:
+      - "8093:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=benchmark
+      - JAVA_OPTS=-Xms512m -Xmx1024m
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 1G
+
+networks:
+  default:
+    name: algorithm-network
