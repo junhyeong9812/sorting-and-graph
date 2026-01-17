@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    // 추가 의존성
+}
+
+bootJar {
+    archiveFileName = 'graph-traversal.jar'
+}
