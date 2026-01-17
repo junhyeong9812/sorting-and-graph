@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: graph-traversal-study
+
+server:
+  port: 8080
+
+---
+spring:
+  config:
+    activate:
+      on-profile: benchmark
+
+benchmark:
+  graph:
+    node-counts:
+      - 1000
+      - 10000
+      - 100000
+      - 1000000
+    densities:
+      - SPARSE
+      - MEDIUM
+      - DENSE
+    structures:
+      - TREE
+      - RANDOM
+      - GRID
+    warm-up-iterations: 3
+    measure-iterations: 5
+
+logging:
+  level:
+    com.study.graph: DEBUG

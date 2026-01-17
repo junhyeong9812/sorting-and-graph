@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: sorting-algorithm-study
+
+server:
+  port: 8080
+
+---
+spring:
+  config:
+    activate:
+      on-profile: benchmark
+
+benchmark:
+  sorting:
+    data-sizes:
+      - 10000
+      - 50000
+      - 100000
+      - 500000
+      - 1000000
+    data-types:
+      - RANDOM
+      - NEARLY_SORTED
+      - REVERSED
+    warm-up-iterations: 3
+    measure-iterations: 5
+
+logging:
+  level:
+    com.study.sorting: DEBUG
