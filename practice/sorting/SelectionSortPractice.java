@@ -25,30 +25,57 @@ import java.util.Arrays;
  */
 public class SelectionSortPractice {
 
-    public static void sort(int[] arr) {
-        int n = arr.length;
-        
-        // TODO: 직접 구현해보세요
-        // 힌트:
-        // 1. i = 0 ~ n-2 반복
-        // 2. i부터 끝까지 중 최솟값의 인덱스(minIdx) 찾기
-        // 3. arr[i]와 arr[minIdx] 교환
-        for (int index = 0; index < n; index++) {
-            for (int loop = index; loop < n; loop++) {
-                int minIdx = arr[index];
-                if (arr[loop]<arr[index]) {
-                    arr[index] = arr[loop];
-                    arr[loop] = minIdx;
+//    public static void sort(int[] arr) {
+//        int n = arr.length;
+//
+//        // TODO: 직접 구현해보세요
+//        // 힌트:
+//        // 1. i = 0 ~ n-2 반복
+//        // 2. i부터 끝까지 중 최솟값의 인덱스(minIdx) 찾기
+//        // 3. arr[i]와 arr[minIdx] 교환
+//        for (int index = 0; index < n; index++) {
+//            for (int loop = index; loop < n; loop++) {
+//                if (arr[loop]<arr[index]) {
+//                    int minIdx = arr[index];
+//                    arr[index] = arr[loop];
+//                    arr[loop] = minIdx;
+//                }
+//            }
+//        }
+//    }
+
+    public static interface Sort {
+        public void sort(int[] arr);
+    }
+    public static class SelectionSort implements Sort{
+
+        public SelectionSort() {
+
+        }
+
+        @Override
+        public void sort(int[] arr){
+            int size = arr.length;
+            for (int index = 0; index < size; index++){
+                for(int loop = index; loop < size; loop++){
+                    if(arr[loop]<arr[index]){
+                        int temp = arr[index];
+                        arr[index] = arr[loop];
+                        arr[loop] = temp;
+                    }
                 }
             }
         }
+
     }
 
     public static void main(String[] args) {
         int[] arr = {5, 3, 8, 4, 2};
+        Sort sort = new SelectionSort();
         System.out.println("정렬 전: " + Arrays.toString(arr));
-        
-        sort(arr);
+
+//        sort(arr);
+        sort.sort(arr);
         
         System.out.println("정렬 후: " + Arrays.toString(arr));
         System.out.println("기대값:  [2, 3, 4, 5, 8]");

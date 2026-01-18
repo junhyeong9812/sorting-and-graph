@@ -2,3 +2,4 @@ rootProject.name = 'sorting-and-graph'
 
 include 'sorting'
 include 'graph-traversal'
+include 'practice'
