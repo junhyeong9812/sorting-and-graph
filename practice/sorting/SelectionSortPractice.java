@@ -56,17 +56,27 @@ public class SelectionSortPractice {
         @Override
         public void sort(int[] arr){
             int size = arr.length;
+            checkIndex(arr, size);
+        }
+        private void checkIndex(int[] arr, int size) {
             for (int index = 0; index < size; index++){
-                for(int loop = index; loop < size; loop++){
-                    if(arr[loop]<arr[index]){
-                        int temp = arr[index];
-                        arr[index] = arr[loop];
-                        arr[loop] = temp;
-                    }
-                }
+                findSortingData(arr, index, size);
             }
         }
 
+        private void findSortingData(int[] arr, int index, int size) {
+            for(int loop = index; loop < size; loop++){
+                swapIndex(arr, index, loop);
+            }
+        }
+
+        private void swapIndex(int[] arr, int targetIndex,int loopIndex) {
+            if(arr[loopIndex]<arr[targetIndex]){
+                int temp = arr[targetIndex];
+                arr[targetIndex] = arr[loopIndex];
+                arr[loopIndex] = temp;
+            }
+        }
     }
 
     public static void main(String[] args) {

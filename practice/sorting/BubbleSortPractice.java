@@ -24,7 +24,7 @@ public class BubbleSortPractice {
 
     public static void sort(int[] arr) {
         int n = arr.length;
-        
+
         // TODO: 직접 구현해보세요
         // 힌트:
         // 1. 바깥 루프: i = 0 ~ n-2
@@ -33,16 +33,31 @@ public class BubbleSortPractice {
         // 4. (최적화) 교환이 없으면 break
 
         for (int index = 0; index < n - 1; index++) {
+            boolean swapped = false;
             for (int check = 0; check < n - index - 1; check++){
                 if (arr[check]>arr[check+1]) {
                     int temp = arr[check];
                     arr[check] = arr[check + 1];
                     arr[check + 1] = temp;
+                    swapped = true;
                 }
             }
+            if (!swapped) break;
         }
-        
     }
+//
+//    public interface Sort {
+//        public void sort(int[] arr);
+//    }
+//
+//    public class BubbleSort implements Sort {
+//
+//        @Override
+//        public void sort(int[] arr) {
+//
+//        }
+//    }
+
 
     public static void main(String[] args) {
         int[] arr = {5, 3, 8, 4, 2};
