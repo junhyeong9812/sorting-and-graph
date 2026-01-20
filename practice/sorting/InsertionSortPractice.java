@@ -34,7 +34,16 @@ public class InsertionSortPractice {
         // 3. j = i-1부터 시작해서
         // 4. arr[j] > key 인 동안 arr[j+1] = arr[j] (한 칸씩 밀기)
         // 5. 빈 자리에 key 삽입
-        
+        for (int index = 1; index < n; index++) {
+            int key = arr[index];
+            int target = index - 1;
+
+            while (target>=0 && arr[target] > key) {
+                arr[target + 1] = arr[target];
+                target--;
+            }
+            arr[target + 1] = key;
+        }
     }
 
     public static void main(String[] args) {
